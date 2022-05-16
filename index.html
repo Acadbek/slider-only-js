@@ -7,16 +7,30 @@
     <title>Slider</title>
 </head>
 <style>
-      .wrapper{
-        display: flex;
-        justify-content: center;
-        align-items: center;
+    .wrapper{
+        width: 650px;
     }
     .block img{
         width: 600px
     }
+    .counters{
+        display: flex;
+        gap: 10px;
+    }
+    .prev, .next{
+        cursor: pointer;
+    }
 </style>
 <body>
+    
+    <div class="counters">
+        <button class="prev"><</button>
+        <span id="current">03</span>
+        /
+        <div id="total">04</div>
+        <button class="next">></button>
+    </div>
+
     <div class="wrapper">
         <div class="wrapper__inner">
             <div class="block">

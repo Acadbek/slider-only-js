@@ -3,6 +3,8 @@ window.addEventListener('DOMContentLoaded', () => {
         wrapper = document.querySelector('.wrapper'),
         field = document.querySelector('.inner');
 
-    let width = getComputedStyle(wrapper);
-    console.log(width)
+    let width = getComputedStyle(wrapper).width
+    field.style.width = 100 * block.length + '%';
 })
+
+// `
