@@ -35,7 +35,7 @@ window.addEventListener('DOMContentLoaded', () => {
 		}else{
 			offset -= +width.slice(0, width.length - 2)
 		}
-		field.style.transform = `translateX(${offset}px)`
+		field.style.transform = `translateX(-${offset}px)`
 	})
 
 
