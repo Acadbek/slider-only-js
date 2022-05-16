@@ -76,9 +76,7 @@ window.addEventListener('DOMContentLoaded', () => {
 		if(i == 0) {
 			dot.style.opacity = 1
 		}
-
 		indicator.append(dot);
-
 		dots.push(dot)
 	}
 
@@ -131,13 +129,24 @@ window.addEventListener('DOMContentLoaded', () => {
 		dots.forEach(dot => dot.style.opacity = '0.5')
 		dots[index - 1].style.opacity = 1
 	})
+	dots.forEach(dot => {
+		dot.addEventListener('click', e => {
+			const to = e.target.getAttribute('data-index');
+			index = to
+			offset = (+width.slice(0, width.length - 2) * (to - 1))
+			field.style.transform = `translateX(-${offset}px)`
 
+			if(block.length < 10) {
+				current.textContent = `0${index}`;
+			} else{
+				current.textContent = index;
+			}
 
-
-
-
-
-
+			dots.forEach(dot => dot.style.opacity = '0.5')
+			dots[index - 1].style.opacity = 1
+			
+		})
+	})
 
 
 
