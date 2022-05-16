@@ -71,10 +71,10 @@ window.addEventListener('DOMContentLoaded', () => {
 		`
 		
 		if(i == 0) {
-			dot.style.opacity = 1
+			dot.style.opacity = 1;
 		}
 		indicator.append(dot);
-		dots.push(dot)
+		dots.push(dot);
 	}
 
 	next.addEventListener('click', () => {
@@ -86,9 +86,9 @@ window.addEventListener('DOMContentLoaded', () => {
 		field.style.transform = `translateX(-${offset}px)`
 
 		if(index == block.length) {
-			index = 1
+			index = 1;
 		} else{
-			index++
+			index++;
 		}
 
 		if(block.length < 10) {
@@ -97,8 +97,8 @@ window.addEventListener('DOMContentLoaded', () => {
 			current.textContent = index;
 		}
 
-		dots.forEach(dot => dot.style.opacity = '0.5')
-		dots[index - 1].style.opacity = 1
+		dots.forEach(dot => dot.style.opacity = '0.5');
+		dots[index - 1].style.opacity = 1;
 	})
 
 	prev.addEventListener('click', () => {
@@ -121,15 +121,15 @@ window.addEventListener('DOMContentLoaded', () => {
 			current.textContent = index;
 		}
 
-		dots.forEach(dot => dot.style.opacity = '0.5')
-		dots[index - 1].style.opacity = 1
+		dots.forEach(dot => dot.style.opacity = '0.5');
+		dots[index - 1].style.opacity = 1;
 	})
 	dots.forEach(dot => {
 		dot.addEventListener('click', e => {
 			const to = e.target.getAttribute('data-index');
-			index = to
-			offset = (+width.slice(0, width.length - 2) * (to - 1))
-			field.style.transform = `translateX(-${offset}px)`
+			index = to;
+			offset = (+width.slice(0, width.length - 2) * (to - 1));
+			field.style.transform = `translateX(-${offset}px)`;
 
 			if(block.length < 10) {
 				current.textContent = `0${index}`;
@@ -137,8 +137,8 @@ window.addEventListener('DOMContentLoaded', () => {
 				current.textContent = index;
 			}
 
-			dots.forEach(dot => dot.style.opacity = '0.5')
-			dots[index - 1].style.opacity = 1
+			dots.forEach(dot => dot.style.opacity = '0.5');
+			dots[index - 1].style.opacity = 1;
 			
 		})
 	})
