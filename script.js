@@ -35,9 +35,6 @@ window.addEventListener('DOMContentLoaded', () => {
 		slide.style.width = width;
 	})
 
-
-
-	// offer.style.position = 'relative';
 	offer.style.position = 'relative';
 	let indicator = document.createElement('ol');
 	indicator.style.cssText = `
@@ -79,8 +76,6 @@ window.addEventListener('DOMContentLoaded', () => {
 		indicator.append(dot);
 		dots.push(dot)
 	}
-
-
 
 	next.addEventListener('click', () => {
 		if(offset == (+width.slice(0, width.length - 2) * (block.length - 1))) {
