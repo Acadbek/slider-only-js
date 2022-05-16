@@ -5,7 +5,14 @@ window.addEventListener('DOMContentLoaded', () => {
 		prev = document.querySelector('.prev'),
 		next = document.querySelector('.next'),
 		current = document.querySelector('#current'),
-		total = document.querySelector('#total');
+		total = document.querySelector('#total'),
+		offer = document.querySelector('.offer'),
+		dots = [];
+
+		let dom = document.querySelector('body');
+		dom.style.backgroundColor = '#333';
+		dom.style.color = '#fff';
+
 
 	let index = 1;
 	let offset = 0;
@@ -28,6 +35,55 @@ window.addEventListener('DOMContentLoaded', () => {
 		slide.style.width = width;
 	})
 
+
+
+	// offer.style.position = 'relative';
+	offer.style.position = 'relative';
+	let indicator = document.createElement('ol');
+	indicator.style.cssText = `
+		position = absolute;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		z-index: 15;
+		display: flex;
+		justify-content: center;
+		margin-right: 15%;
+		margin-left: 15%;
+		list-style: none;
+	`
+	offer.append(indicator);
+
+	for(let i = 0; i < block.length; i++) {
+		const dot = document.createElement('li');
+		dot.setAttribute('data-index', i + 1);
+		dot.style.cssText = `
+			box-sizing: content-box;
+			flex: 0 1 auto;
+			width: 30px;
+			height: 7px;
+			margin-right: 3px;
+			margin-left: 3px;
+			cursor: pointer;
+			background-color: #fff;
+			background-clip: padding-box;
+			border-top: 10px solid transparent;
+			border-bottom: 10px solid transparent;
+			opacity: 0.5;
+			transition: opacity .7s ease;
+		`
+		
+		if(i == 0) {
+			dot.style.opacity = 1
+		}
+
+		indicator.append(dot);
+
+		dots.push(dot)
+	}
+
+
+
 	next.addEventListener('click', () => {
 		if(offset == (+width.slice(0, width.length - 2) * (block.length - 1))) {
 			offset = 0;
@@ -47,20 +103,23 @@ window.addEventListener('DOMContentLoaded', () => {
 		} else{
 			current.textContent = index;
 		}
+
+		dots.forEach(dot => dot.style.opacity = '0.5')
+		dots[index - 1].style.opacity = 1
 	})
 
 	prev.addEventListener('click', () => {
 		if(offset == 0) {
-			offset = (+width.slice(0, width.length - 2) * (block.length - 1))
+			offset = (+width.slice(0, width.length - 2) * (block.length - 1));
 		} else{
-			offset -= +width.slice(0, width.length - 2)
+			offset -= +width.slice(0, width.length - 2);
 		}
-		field.style.transform = `translateX(-${offset}px)`
+		field.style.transform = `translateX(-${offset}px)`;
 
 		if(index == 1) {
-			index = block.length
+			index = block.length;
 		} else{
-			index--
+			index--;
 		}
 
 		if(block.length < 10) {
@@ -68,6 +127,9 @@ window.addEventListener('DOMContentLoaded', () => {
 		} else{
 			current.textContent = index;
 		}
+
+		dots.forEach(dot => dot.style.opacity = '0.5')
+		dots[index - 1].style.opacity = 1
 	})
 
 
